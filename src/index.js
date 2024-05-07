@@ -23,7 +23,6 @@ class Cloudflare {
 	async findZone(name) {
 		const response = await this._fetchWithToken(`zones?name=${name}`);
 		const body = await response.json();
-		console.log(JSON.stringify(body))
 		if (!body.success || body.result.length === 0) {
 			throw new CloudflareApiException(`Failed to find zone '${name}'`);
 		}
